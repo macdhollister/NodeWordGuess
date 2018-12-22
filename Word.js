@@ -21,6 +21,14 @@ function Word(word) {
             for (let letter of this.letterArr) {
                 letter.guess(char)
             }
+        },
+        revealWord : function() {
+            let result = '';
+            for (let letter of this.letterArr) {
+                result += letter.char;
+            }
+
+            return result;
         }
     }
 }

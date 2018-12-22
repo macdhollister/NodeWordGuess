@@ -86,6 +86,8 @@ function newGame() {
                 console.log('You win!');
             }
 
+            console.log('The word was ' + gameWord.revealWord());
+
             inq.prompt([
                 {
                     type: 'confirm',
