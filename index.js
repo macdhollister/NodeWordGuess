@@ -35,10 +35,12 @@ function newGame() {
 
     function promptGuess(n) {
         if (n > 0) {
+            let lettersGuessed = '';
+            if(guessedLetters.length) lettersGuessed = `Letters Guessed: ${guessedLetters}\r\n`;
             inq.prompt([
                 {
                     type: 'input',
-                    message: 'Guess a letter: ',
+                    message: `${lettersGuessed}Guess a letter: `,
                     name: 'userGuess'
                 }
             ]).then(function(response) {
