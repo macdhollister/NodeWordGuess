@@ -9,6 +9,20 @@ function Word(word) {
     for (let i = 0; i < word.length; i++) letterArr.push(new Letter(word[i]));
 
     return {
-        
+        letterArr : letterArr,
+        toString : function(separator = '') {
+            let result = '';
+            for (let letter of this.letterArr) {
+                result += separator + letter;
+            }
+            return result;
+        },
+        guess : function(char) {
+            for (let letter of this.letterArr) {
+                letter.guess(char)
+            }
+        }
     }
 }
+
+module.exports = Word;

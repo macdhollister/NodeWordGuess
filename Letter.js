@@ -8,7 +8,7 @@ function Letter(char) {
     return {
         char : char,
         isGuessed : false,
-        display : function() {
+        toString : function() {
             if (this.isGuessed) {
                 return this.char;
             } else {
@@ -19,7 +19,9 @@ function Letter(char) {
             if (userGuess === this.char) {
                 this.isGuessed = true;
             }
-            this.display();
+            this.toString();
         }
     }
 }
+
+module.exports = Letter;
