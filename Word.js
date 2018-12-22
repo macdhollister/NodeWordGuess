@@ -10,7 +10,7 @@ function Word(word) {
 
     return {
         letterArr : letterArr,
-        toString : function(separator = '') {
+        toString : function(separator = ' ') {
             let result = '';
             for (let letter of this.letterArr) {
                 result += separator + letter;
