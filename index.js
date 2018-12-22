@@ -6,6 +6,7 @@ function newGame() {
     // defines game stats
     let gameWord = new Word(randWords());
     let guessesLeft;
+    let guessedLetters = [];
 
     // prints out blanks
     // prompts user for alphabetic character
@@ -42,7 +43,11 @@ function newGame() {
                 }
             ]).then(function(response) {
                 let userGuess = response.userGuess;
-                if (userGuess.match(/[a-z]/i) && userGuess.length === 1) {
+                if (userGuess.match(/[a-z]/i) 
+                        && userGuess.length === 1 
+                        && !guessedLetters.includes(userGuess)) {
+
+                    guessedLetters.push(userGuess);
                     let before = '' + gameWord;
                     gameWord.guess(userGuess);
                     let after = '' + gameWord;
@@ -62,7 +67,10 @@ function newGame() {
                         promptGuess(n-1);
                     }
                 } else {
-                    console.log('You need to guess a letter');
+                    if (guessedLetters.includes(userGuess)) console.log("You've already guessed that letter!");
+                    else console.log('You need to guess a letter');
+                    console.log(n + ' guesses left');
+                    console.log('' + gameWord);
                     promptGuess(n);
                 }
 
@@ -90,8 +98,5 @@ function newGame() {
         }
     }
 }
-
-
-
 
 newGame();
